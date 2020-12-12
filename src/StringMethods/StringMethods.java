@@ -3,6 +3,7 @@ package StringMethods;
 import java.util.Arrays;
 import java.util.Base64;
 
+
 /*
 Visit the JavaDocs for the String class to view everything you can do with a String.  
 
@@ -30,15 +31,31 @@ Character.getNumericValue(char c);
 
 public class StringMethods {
 
+
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
-		return null;
+		
+		int sOne= s1.length();
+		int sTwo= s2.length();
+	if( sOne > sTwo) {
+		return s1;
+	}
+	if(sTwo>sOne) {
+		return s2;
+	}
+		return "equal";
 	}
 
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
-		return null;
+		if(s.contains("underscores")) {
+		s=s.replace(" ", "_");
+		
+		return s;
+		} 
+
+			return s;	
 	}
 
 	
@@ -58,6 +75,14 @@ public class StringMethods {
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
+		int appear=0;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.contains(substring)) {
+				appear++;
+				return appear;
+			}
+		}
+	
 		return 0;
 	}
 
