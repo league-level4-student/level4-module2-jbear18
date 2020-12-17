@@ -101,6 +101,8 @@ public class StringMethods {
 
 
 	// Return the number of times String substring appears in String s
+	
+	//WORK ON THIS NEXT TIME
 	public static int substringCount(String s, String substring) {
 int string= s.length();
 int times= substring.length();
