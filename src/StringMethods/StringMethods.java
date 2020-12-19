@@ -92,51 +92,58 @@ public class StringMethods {
 		int sum = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (Character.isDigit(s.charAt(i))) {
-			String temp= s.substring(i, i+1);
-			sum += Integer.parseInt(temp);
-			} 
+				String temp = s.substring(i, i + 1);
+				sum += Integer.parseInt(temp);
+			}
 		}
 		return sum;
 	}
 
-
 	// Return the number of times String substring appears in String s
-	
-	//WORK ON THIS NEXT TIME
+
 	public static int substringCount(String s, String substring) {
-int string= s.length();
-int times= substring.length();
+		int lastIndex = 0;
+		int count = 0;
 
-int temp=0;
-for (int i = 0; i <= times-string; i++) {
-for (int j = 0; j < string; j++) {
-	if(substring.charAt(i+j)!=s.charAt(j)) {
-		break;
-	}
-	if(j==string) {
-		temp++;
-		j=0;
-	}
-}
-}
+		while (lastIndex != -1) {
+			lastIndex = s.indexOf(substring, lastIndex);
 
-		return temp;
+			if (lastIndex != -1) {
+				count++;
+				lastIndex += substring.length();
+			}
+		}
+
+		return count;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		return Utilities.encrypt(s.getBytes(), (byte) key);
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		return Utilities.decrypt(s, (byte) key);
 	}
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
+	//WORK ON THIS NEXT TIME 
+	
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		int lastIndex = 0;
+		int count = 0;
+
+		while (lastIndex != -1) {
+			lastIndex = s.indexOf(substring, lastIndex);
+
+			if (lastIndex != -1) {
+				count++;
+				lastIndex += substring.length();
+			}
+		}
+		return count;
 	}
 
 	// Given String s, return the number of characters between the first occurrence
@@ -150,6 +157,19 @@ for (int j = 0; j < string; j++) {
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
+
+		s = s.trim().replaceAll("[^a-zA-Z]", "").toLowerCase();
+		int i = 0;
+		int j = s.length() - 1;
+
+		while (j > i) {
+			if (s.charAt(i) != s.charAt(j)) {
+				return false;
+			}
+			i++;
+			j--;
+
+		}
 		return true;
 	}
 
